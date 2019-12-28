@@ -12,7 +12,7 @@ namespace BankOfDotnet.IdentitySrv
         {
             return new List<ApiResource>
             {
-            new ApiResource("bankOfDotnet","Customer Api for BankOfDotnet")
+            new ApiResource("bankOfDotnetApi","Customer Api for BankOfDotnet")
             };
         }
 
@@ -28,7 +28,7 @@ namespace BankOfDotnet.IdentitySrv
                   {
                   new Secret("Secret".Sha256())
                   },
-                  AllowedScopes={ "bankOfDotnet" }
+                  AllowedScopes={ "bankOfDotnetApi" }
               }
             };
         }

@@ -26,6 +26,15 @@ namespace BankOfDotnet.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddAuthentication("Bearer")
+                .AddIdentityServerAuthentication(option =>
+                {
+                    option.Authority = "http://localhost:5000";
+                    option.RequireHttpsMetadata = false;
+                    option.ApiName = "bankOfDotnetApi";
+                }
+                );
+
             services.AddDbContext<BankContext>(opts => opts.UseInMemoryDatabase("BankingDb"));
 
             services.AddControllers();
@@ -41,8 +50,9 @@ namespace BankOfDotnet.API
 
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
-
+            
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
