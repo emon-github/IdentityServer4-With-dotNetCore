@@ -5,3 +5,5 @@
 /BankOfDotnet/.vs/BankOfDotnet/v16/Server/sqlite3
 /BankOfDotnet/BankOfDotnet.API/bin/Debug/netcoreapp3.0
 /BankOfDotnet/BankOfDotnet.API/obj
+/BankOfDotnet/BankOfDotnet.ConsoleClient/bin/Debug/netcoreapp3.0
+/BankOfDotnet/BankOfDotnet.ConsoleClient/obj
