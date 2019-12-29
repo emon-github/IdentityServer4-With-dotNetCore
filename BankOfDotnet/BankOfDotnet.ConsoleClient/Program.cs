@@ -14,34 +14,56 @@ namespace BankOfDotnet.ConsoleClient
 
         private static async Task MainAsync()
         {
-            var discoveryClient = new DiscoveryClient("http://localhost:5000");
-            var doc = await discoveryClient.GetAsync();
+            var discoRo = await DiscoveryClient.GetAsync("http://localhost:5000");
+           
 
-            if (doc.IsError)
+            if (discoRo.IsError)
             {
-                Console.WriteLine(doc.Error);
+                Console.WriteLine(discoRo.Error);
                 return;
             }
 
-            var tokenClient = new TokenClient(doc.TokenEndpoint, "Client", "Secret");
-            var tokenResponse = await tokenClient.RequestClientCredentialsAsync("bankOfDotnetApi");
+            var tokenClientRo = new TokenClient(discoRo.TokenEndpoint, "ro.Client", "Secret");
+            var tokenResponseRo = await tokenClientRo.RequestResourceOwnerPasswordAsync("Ashraf","password", "bankOfDotnetApi");
 
-            if(tokenResponse.IsError)
+            if (tokenResponseRo.IsError)
             {
-                Console.WriteLine(tokenResponse.Error);
+                Console.WriteLine(tokenResponseRo.Error);
                 return;
             }
 
-            Console.WriteLine(tokenResponse.Json);
+            Console.WriteLine(tokenResponseRo.Json);
             Console.WriteLine("\n\n");
 
+            //=================================================================
+            //var discoveryClient = new DiscoveryClient("http://localhost:5000");
+            //var doc = await discoveryClient.GetAsync();
+
+            //if (doc.IsError)
+            //{
+            //    Console.WriteLine(doc.Error);
+            //    return;
+            //}
+
+            //var tokenClient = new TokenClient(doc.TokenEndpoint, "Client", "Secret");
+            //var tokenResponse = await tokenClient.RequestClientCredentialsAsync("bankOfDotnetApi");
+
+            //if(tokenResponse.IsError)
+            //{
+            //    Console.WriteLine(tokenResponse.Error);
+            //    return;
+            //}
+
+            //Console.WriteLine(tokenResponse.Json);
+            //Console.WriteLine("\n\n");
+
             var client = new HttpClient();
-            client.SetBearerToken(tokenResponse.AccessToken);
+            client.SetBearerToken(tokenResponseRo.AccessToken);
 
 
             var customerInfo = new StringContent(
                 JsonConvert.SerializeObject(
-                    new { id = 5, Firstname = "Anik", LastName = "Datta" }), Encoding.UTF8, "application/json"
+                    new { id = 4, Firstname = "Abhi", LastName = "Das" }), Encoding.UTF8, "application/json"
                 );
 
             var createCustomerResponse = await client.PostAsync("http://localhost:49961/api/customers",customerInfo);
@@ -50,8 +72,7 @@ namespace BankOfDotnet.ConsoleClient
             {
                 Console.WriteLine(createCustomerResponse.StatusCode);
             }
-
-
+            
             var getCustomerResponse = await client.GetAsync("http://localhost:49961/api/customers");
             if (!getCustomerResponse.IsSuccessStatusCode)
             {
