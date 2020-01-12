@@ -16,8 +16,12 @@ namespace BankOfDotnet.IdentitySrv
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddMvc(options => options.EnableEndpointRouting = false);
+            //services.AddMvc();
+
             services.AddIdentityServer()
                 .AddDeveloperSigningCredential()
+                .AddInMemoryIdentityResources(Config.GetIdentityResources())
                 .AddInMemoryApiResources( Config.GetAllApiResources())
                 .AddInMemoryClients(Config.GetClients())
                 .AddTestUsers(Config.GetUsers());
@@ -32,15 +36,19 @@ namespace BankOfDotnet.IdentitySrv
             }
 
             app.UseIdentityServer();
-            app.UseRouting();
+            //app.UseRouting();
 
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapGet("/", async context =>
-                {
-                    await context.Response.WriteAsync("Hello World!");
-                });
-            });
+            //app.UseEndpoints(endpoints =>
+            //{
+            //    endpoints.MapControllerRoute("default", "{controller=Home}/{action=Index}");
+            //    //endpoints.MapGet("/", async context =>
+            //    //{
+            //    //    await context.Response.WriteAsync("Hello World!");
+            //    //});
+            //});
+
+            app.UseMvc();
+            app.UseMvcWithDefaultRoute();
         }
     }
 }

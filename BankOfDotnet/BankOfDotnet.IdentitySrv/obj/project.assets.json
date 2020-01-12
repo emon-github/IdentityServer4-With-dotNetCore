@@ -491,11 +491,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\G-Drive-Sync\\udemy\\.NetCore Identity Server 4\\IdentityServer4-With-dotNetCore\\BankOfDotnet\\BankOfDotnet.IdentitySrv\\BankOfDotnet.IdentitySrv.csproj",
+      "projectUniqueName": "E:\\WORK STATION\\Git Project\\IdentityServer4-With-dotNetCore\\BankOfDotnet\\BankOfDotnet.IdentitySrv\\BankOfDotnet.IdentitySrv.csproj",
       "projectName": "BankOfDotnet.IdentitySrv",
-      "projectPath": "E:\\G-Drive-Sync\\udemy\\.NetCore Identity Server 4\\IdentityServer4-With-dotNetCore\\BankOfDotnet\\BankOfDotnet.IdentitySrv\\BankOfDotnet.IdentitySrv.csproj",
+      "projectPath": "E:\\WORK STATION\\Git Project\\IdentityServer4-With-dotNetCore\\BankOfDotnet\\BankOfDotnet.IdentitySrv\\BankOfDotnet.IdentitySrv.csproj",
       "packagesPath": "C:\\Users\\EMON\\.nuget\\packages\\",
-      "outputPath": "E:\\G-Drive-Sync\\udemy\\.NetCore Identity Server 4\\IdentityServer4-With-dotNetCore\\BankOfDotnet\\BankOfDotnet.IdentitySrv\\obj\\",
+      "outputPath": "E:\\WORK STATION\\Git Project\\IdentityServer4-With-dotNetCore\\BankOfDotnet\\BankOfDotnet.IdentitySrv\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
